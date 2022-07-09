@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(() => {
     // trending
     $.ajax({
         url: `https://api.themoviedb.org/3/trending/all/day?api_key=e5321b995009eacf8a47299c21aa3b10`,
@@ -40,7 +40,6 @@ $(document).ready(function() {
             $("#trending").html(htmlString);
         }
     });
-
     $("#searchForm").on("submit", (e) => {
         e.preventDefault();
         $.ajax({
@@ -58,7 +57,7 @@ $(document).ready(function() {
                 if(response.responseJSON.results.length < max) {
                     max = response.responseJSON.results.length;
                 }
-
+    
                 for(var i = 0; i < max; i++) {
                     let item = response.responseJSON.results[i];
                     let streamUrl = `watch/tv.html?id=${item.id}&s=1&e=1`;
