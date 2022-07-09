@@ -42,6 +42,7 @@ $(document).ready(() => {
     });
     $("#searchForm").on("submit", (e) => {
         e.preventDefault();
+        $("#heading").html("<h1>Results</h1>");
         $.ajax({
             url: `https://api.themoviedb.org/3/search/${$("#search-dropdown").val()}?api_key=e5321b995009eacf8a47299c21aa3b10&language=en-US&query=${$("#searchBox").val()}&page=1&include_adult=false`,
             method: "GET",    
