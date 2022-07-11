@@ -112,7 +112,6 @@ $(document).ready(() => {
           }
 
           if (genreString.trim().slice(-1) == ',') {
-            console.log(genreString);
             genreString = genreString.trim().slice(0, -1);
           }
 
