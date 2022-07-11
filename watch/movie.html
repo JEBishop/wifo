@@ -40,8 +40,7 @@
 
           <form id="searchForm" action="" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
             <input id="searchBox" type="search" class="form-control form-control-light text-black bg-light" placeholder="Search..." aria-label="Search">
-          </form>
-        -->
+          </form>-->
         </div>
       </div>
     </header>
@@ -52,10 +51,24 @@
     <script>
         let url = window.location.href;
         let params = window.location.href.split('?')[1];
+        let movie_id = params.split('&')[0].split('=')[1];
         let streamUrl = `https://www.2embed.to/embed/tmdb/movie?${params}`;
+
         $("#window").html(
             `<iframe id="theatre" src="${streamUrl}"></iframe>`
         );
+
+        $.ajax({
+            url: `https://api.themoviedb.org/3/movie/${movie_id}?api_key=e5321b995009eacf8a47299c21aa3b10&language=en-US`,
+            method: "GET",    
+            dataType: "json",
+            error: function(xhr, status, error) {
+                console.log(`error: ${xhr.responseText}`);
+            },
+            complete: function(response) {
+              document.title += " | " + response.responseJSON.title;
+            }
+        });
     </script>
     <script src="../main.js"></script>
   </body>

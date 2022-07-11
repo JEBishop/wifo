@@ -70,7 +70,6 @@
         $("#episodes").on("change", () => {
           renderTheatre();
         })
-
         renderTheatre();
         
         function renderTheatre() {
@@ -99,6 +98,8 @@
               $("#seasons").html(
                 htmlSeasons
               );
+
+              document.title += " | " + response.responseJSON.name;
             }
         });
         
